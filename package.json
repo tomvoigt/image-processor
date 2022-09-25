@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine",
     "prepare": "husky install",
     "start": "nodemon src/index.ts",
+    "format": "prettier --write .",
+    "lint": "eslint",
+    "test": "jasmine",
     "build": "tsc"
   },
   "author": "Tom Voigt",
@@ -15,6 +17,9 @@
     "@types/express": "^4.17.14",
     "@types/jasmine": "^4.3.0",
     "@types/node": "^18.7.20",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "eslint": "^8.24.0",
     "husky": "^8.0.1",
     "jasmine": "^4.4.0",
     "lint-staged": "^13.0.3",
@@ -24,6 +29,7 @@
     "typescript": "^4.8.3"
   },
   "lint-staged": {
+    "*.ts": "eslint --cache --fix",
     "*.{ts,js,css,md,json}": "prettier --write"
   },
   "dependencies": {
