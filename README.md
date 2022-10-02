@@ -1,15 +1,30 @@
 # Image Processing API
 
-## Project introduction
+## Quick start
 
-You will be building an API that can be used in two different ways. As a simple placeholder API, the first allows you to place images into your frontend with the size set via URL parameters (and additional stylization if you choose) for rapid prototyping. The second use case is as a library to serve properly scaled versions of your images to the front end to reduce page load size. Rather than needing to resize and upload multiple copies of the same image to be used throughout your site, the API you create will handle resizing and serving stored images for you.
+- Run `npm start` to quickly start the local development server. This will refresh on every change to the source code.
+- Run `npm run format` to format the codebase with Prettier.
+- Run `npm run lint` to lint the code with ESLint.
+- Run `npm test` to test the source code with Jasmine and Supertest.
+- Run `npm run build` to transpile Typescript to Javascript.
 
-You will set up your Node.js project from scratch, install all dependencies, and write all necessary configurations to make your dependencies work together. Even though the project being built is quite simple, the way you set up this project will be scalable enough to move to an enterprise-level solution in the future. Imagine needing to process hundreds of images with multiple thumbnail sizes for an eCommerce solution. This project provides the building blocks for that level of functionality.
+## Project structure
 
-In addition to setting up and creating the functionality, you will use industry best practices to ensure that your code is as scalable as your architecture. Using TypeScript, unit testing, linting, and formatting, you will write code that is easy to read, maintainable, less error-prone, and easier to debug. At the enterprise level, it becomes possible that hundreds of people may need to interact with your code, so being able to work within standards is imperative to your success.
+- `.husky` includes the existing and newly created Git hooks that are run with Husky.
+- `public` includes the static files that are will be exposed to the client after resizing. An `output` folder will be created when processed images need to be stored.
+- `src` includes all of the source code and tests in Typescript.
 
-## Project Summary
+In order to allow for the application to scale easily, the following structure has been set up for the source code:
 
-This project aims to give you a real-world scenario in which you would read and write to your disk via a Node.js express server rather than a database. The project you create serves two purposes: to prepare you for setting up scalable code and architecture for real-world projects and tie together some of the most popular middleware and utilities found in Node.js projects. This project barely touches the surface of what is possible but will prove your ability to use what you’ve learned in real-world scenarios.
+- `middleware` includes all of the Express middlewares that can be used to compose endpoints.
+- `router` includes the `Router` object to which endpoints can be added. New API roots should be added to the `Router`.
+- `routes` includes all of the HTTP endpoints of the application.
+- `utilities` includes any utilities that are shared in different modules in the application.
 
-For this project, refactor and test as much as possible while you are building. Since you are using TypeScript and an unfamiliar library, it is sometimes easier to write and build in plain JS to see what your functions return; remember your submission needs to be in TypeScript. As your skills improve, typing in TypeScript will feel more intuitive. Make sure to remove any debugging code from your final submission.
+> Spec files for tests are to be added in the same folder as the unit to be tested. This is to make sure we do not have to manage mimicking the project structure in a seperate tests folder and will make it easier to manage single modules in the application.
+
+> A `dist` folder will be created when building the project. This folder includes all of the transpiled Javascript and can be used to deploy anywhere and run with Node.
+
+## Endpoints
+
+- `/api/resize` accepts the following query parameters: `filename`, `width` and `size`.
