@@ -1,2 +1,3 @@
 export { inputBasePath } from "./constants";
-export { getOutputPath } from "./get-thumbnail-path";
+export { getOutputPath } from "./get-output-path";
+export { resizeImage } from "./resize-image";

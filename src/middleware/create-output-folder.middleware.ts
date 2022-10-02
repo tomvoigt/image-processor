@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import { existsSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
-import { outputBasePath } from "../../utilities/constants";
+import { outputBasePath } from "../utilities/constants";
 
-export const createOutputFolder = async (
+export const createOutputFolderMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction

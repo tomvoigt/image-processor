@@ -1,10 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import { existsSync } from "fs";
 import { join } from "path";
-import sharp from "sharp";
-import { getOutputPath, inputBasePath } from "../../utilities";
+import { getOutputPath, inputBasePath, resizeImage } from "../utilities";
 
-export const resizeImage = async (
+export const resizeImageMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -12,23 +11,20 @@ export const resizeImage = async (
   const { filename, width, height } = req.query;
   const inputPath = join(inputBasePath, `${filename}.jpg`);
   const outputPath = getOutputPath(req);
-  const isCached = existsSync(outputPath);
 
   if (!existsSync(inputPath)) {
     res.sendStatus(404);
   }
 
-  if (!isCached) {
-    try {
-      await sharp(inputPath)
-        .resize({
-          width: Number(width),
-          height: Number(height),
-        })
-        .toFile(outputPath);
-    } catch (error) {
-      res.status(500);
-    }
+  try {
+    await resizeImage(
+      inputPath,
+      outputPath,
+      width?.toString() ?? "",
+      height?.toString() ?? ""
+    );
+  } catch (error) {
+    res.status(500);
   }
 
   next();

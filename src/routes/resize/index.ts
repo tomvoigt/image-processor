@@ -1,1 +1,1 @@
-export { resizeRoute } from "./route";
+export { resizeRoute } from "./resize.route";

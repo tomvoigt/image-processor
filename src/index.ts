@@ -8,3 +8,5 @@ app.use("/api", router);
 app.listen(port, () => {
   console.log(`Image processor listening on ${port}`);
 });
+
+export default app;

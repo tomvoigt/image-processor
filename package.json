@@ -8,7 +8,7 @@
     "start": "nodemon src/index.ts",
     "format": "prettier --write .",
     "lint": "eslint",
-    "test": "jasmine",
+    "test": "ts-node node_modules/jasmine/bin/jasmine",
     "build": "tsc"
   },
   "author": "Tom Voigt",
@@ -18,6 +18,7 @@
     "@types/jasmine": "^4.3.0",
     "@types/node": "^18.7.20",
     "@types/sharp": "^0.31.0",
+    "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
     "eslint": "^8.24.0",
@@ -26,6 +27,7 @@
     "lint-staged": "^13.0.3",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
+    "supertest": "^6.2.4",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.3"
   },
