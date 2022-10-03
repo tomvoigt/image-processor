@@ -7,7 +7,7 @@ export const resizeImageMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): Promise<void> => {
   const { filename, width, height } = req.query;
   const inputPath = join(inputBasePath, `${filename}.jpg`);
   const outputPath = getOutputPath(req);

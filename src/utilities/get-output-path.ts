@@ -2,7 +2,7 @@ import { Request } from "express";
 import path from "path";
 import { outputBasePath } from "./constants";
 
-export const getOutputPath = (req: Request) =>
+export const getOutputPath = (req: Request): string =>
   path.resolve(
     outputBasePath,
     `${req.query.filename}-${req.query.width}x${req.query.height}.jpg`

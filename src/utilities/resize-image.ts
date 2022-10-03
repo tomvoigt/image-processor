@@ -6,7 +6,7 @@ export const resizeImage = async (
   outputPath: string,
   width: string,
   height: string
-) => {
+): Promise<void> => {
   const isCached = existsSync(outputPath);
 
   if (!isCached) {

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
 
-export const api = async (req: Request, res: Response) => {
+export const api = (req: Request, res: Response): void => {
   res.sendStatus(403);
 };
