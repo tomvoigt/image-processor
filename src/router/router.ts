@@ -13,8 +13,8 @@ router.get("/", api);
 router.get(
   "/resize",
   query("filename").isAlpha(),
-  query("width").isInt({ min: 0 }),
-  query("height").isInt({ min: 0 }),
+  query("width").isInt({ min: 1 }),
+  query("height").isInt({ min: 1 }),
   resizeValidator,
   createOutputFolderMiddleware,
   resizeImageMiddleware,
