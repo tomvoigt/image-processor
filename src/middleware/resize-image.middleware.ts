@@ -7,13 +7,17 @@ export const resizeImageMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
-): Promise<void> => {
+) => {
   const { filename, width, height } = req.query;
   const inputPath = join(inputBasePath, `${filename}.jpg`);
   const outputPath = getOutputPath(req);
 
   if (!existsSync(inputPath)) {
-    res.sendStatus(404);
+    return res
+      .status(404)
+      .send(
+        "The provided image is not available as input for processing. Please try another one."
+      );
   }
 
   try {
@@ -24,7 +28,7 @@ export const resizeImageMiddleware = async (
       height?.toString() ?? ""
     );
   } catch (error) {
-    res.status(500);
+    res.status(500).send("Something went wrong with processing the image.");
   }
 
   next();
