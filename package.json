@@ -7,7 +7,7 @@
     "prepare": "husky install",
     "start": "nodemon src/index.ts",
     "format": "prettier --write src/**/*.ts",
-    "lint": "eslint src/**/*.ts --cache --fix",
+    "lint": "eslint \"src/**/*.ts\" --fix",
     "test": "ts-node node_modules/jasmine/bin/jasmine",
     "build": "tsc"
   },
